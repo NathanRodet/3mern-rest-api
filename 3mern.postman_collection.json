@@ -1,0 +1,1225 @@
+{
+	"info": {
+		"_postman_id": "7b620062-78f9-4654-ae1b-76da902e24a6",
+		"name": "3mern",
+		"description": "**Supinfo School project by Rodet Nathan**\n\nThis project use JWT to open logged session, be sure to create an account and pass the token before using all write and users endpoint.\n\nIn case of bad request, Joi will most of the time ensure you to the right schema to follow.\n\n**SETUP ENV :**\n\nYou should use [http://localhost:3001/](http://localhost:3001/') as base for URL to match this documentation.\n\n**You should create a .env file at the root directory path matching the format and information given bellow :**\n\n> `DB_CONNECTION_STRING=\"mongodb+srv://login:password`[`@azcluster0.hhnbp.mongodb.net`](mailto:5er4fd8gt1@azcluster0.hhnbp.mongodb.net)`/database?retryWrites=true&w=majority\"`\n\n> `SERVER_PORT = \"3001\"`\n\n> `SECRET_TOKEN = \"YOUR_SECRET_TOKEN\"`\n\n> `SECRET_TOKEN_DURATION = \"1h\"`\n\nDon't forget to read the readme.\n\n**SETUP THE PROJECT (PROD) :**\n\n*   `npm install`\n*   `npm run-script run`\n    \n\n**SETUP THE PROJECT (DEV) :**\n\n*   `npm install -g nodemon`\n*   `npm install`\n*   `npm start`\n    \n\n**DEPENDANCIES :**\n\n*   \"bcryptjs\": \"^2.4.3\",\n*   \"body-parser\": \"^1.19.2\",\n*   \"cors\": \"^2.8.5\",\n*   \"debug\": \"\\~2.6.9\",\n*   \"dotenv\": \"^16.0.0\",\n*   \"express\": \"\\~4.16.1\",\n*   \"joi\": \"^17.6.0\",\n*   \"jsonwebtoken\": \"^8.5.1\",\n*   \"mongoose\": \"^6.2.9\"",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "USERS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWRhMDdhZGU2MDQ3MDMzODRmZDYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2MjA4LCJleHAiOjE2NDk2OTk4MDh9._VXqZiqFtO3XYKHhBktSjCla7HymzpMu0FkGR9dbfvc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users"
+							]
+						},
+						"description": "Will respond by 204 status code if there is no content to be seen.\n\nCODE 200 :\n\n``` json\n   [ {\n   \"_id\": \"62545d2c7ade604703384fd3\",\n   \"username\": \"admin\", \n   \"mail\": \"admin@admin.com\",\n   \"isAdmin\": true \n   }]\n\n```\n\nCODE : 401\n\n``` json\nUnauthorized\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "BY USER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWRhMDdhZGU2MDQ3MDMzODRmZDYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2MjA4LCJleHAiOjE2NDk2OTk4MDh9._VXqZiqFtO3XYKHhBktSjCla7HymzpMu0FkGR9dbfvc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/users/specific/62545d2c7ade604703384fd3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"specific",
+								"62545d2c7ade604703384fd3"
+							]
+						},
+						"description": "Cannot be a invalid ID since he will came from the front.\n\n``` json\n{\n    \"_id\": \"62545d2c7ade604703384fd3\",\n    \"username\": \"admin\",\n    \"password\": \"$2a$08$X6Nyn8nKSzZ4zzPCs4vQze1njaO/7RCEiUW8rURPuCk3/.EEK7ee.\",\n    \"mail\": \"admin@admin.com\",\n    \"isAdmin\": true,\n    \"__v\": 0\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "COUNT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWRhMDdhZGU2MDQ3MDMzODRmZDYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2MjA4LCJleHAiOjE2NDk2OTk4MDh9._VXqZiqFtO3XYKHhBktSjCla7HymzpMu0FkGR9dbfvc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/users/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"count"
+							]
+						},
+						"description": "Good pratices, used to avoid fetching the whole data while rendering users in list."
+					},
+					"response": []
+				},
+				{
+					"name": "USER",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"username\": \"testuser2\",\r\n    \"password\": \"testpass\",\r\n    \"mail\": \"lorenabird@applica.com\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/post/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"post",
+								""
+							]
+						},
+						"description": "For obvious reason, you cannot pass the field admin.\n\nCODE 200 :\n\n``` json\n{\n    \"username\": \"testuser2\",\n    \"password\": \"$2a$08$ILVSLu7fKXIp7rcwwTeLSONRqyRy7vn0igL1h.3Pc85KWKGkKoj8O\",\n    \"mail\": \"lorenabird@applica.com\",\n    \"isAdmin\": false,\n    \"_id\": \"6255a71f7e4bb7ed5059c28d\",\n    \"__v\": 0\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "BY USER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/delete/6255a71f7e4bb7ed5059c28d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"delete",
+								"6255a71f7e4bb7ed5059c28d"
+							]
+						},
+						"description": "Only admin can use this feature.\n\nCODE : 200 (USER DELETED)\n\n``` json\n{    \n    \"acknowledged\": true,\n    \"deletedCount\": 1\n}\n\n```\n\nCODE 200 (NOTHING TO DELETE)\n\n``` json\n{    \n    \"acknowledged\": true,\n    \"deletedCount\": 0\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "SELF",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWRhMDdhZGU2MDQ3MDMzODRmZDYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2MjA4LCJleHAiOjE2NDk2OTk4MDh9._VXqZiqFtO3XYKHhBktSjCla7HymzpMu0FkGR9dbfvc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/delete/self",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"delete",
+								"self"
+							]
+						},
+						"description": "Admin and user can use this feature to delete their account.\n\nCODE : 200 (USER DELETED)\n\n``` json\n{    \n    \"acknowledged\": true,\n    \"deletedCount\": 1\n}\n\n```\n\nCODE 200 (NOTHING TO DELETE)\n\n``` json\n{    \n    \"acknowledged\": true,\n    \"deletedCount\": 0\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWVjZWQwYjRmYTUxODg1ODJmMGEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2NDg5LCJleHAiOjE2NDk3MDAwODl9.iSZIPILeP80bgmPP8QFczWOtvBxgraGbSRxk3y305pQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/update/username",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"update",
+								"username"
+							]
+						},
+						"description": "User and admin can use this feature to patch their account."
+					},
+					"response": []
+				},
+				{
+					"name": "mail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWVjZWQwYjRmYTUxODg1ODJmMGEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2NDg5LCJleHAiOjE2NDk3MDAwODl9.iSZIPILeP80bgmPP8QFczWOtvBxgraGbSRxk3y305pQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mail\": \"patched@genmedx.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/update/mail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"update",
+								"mail"
+							]
+						},
+						"description": "User and admin can use this feature to patch their account."
+					},
+					"response": []
+				},
+				{
+					"name": "password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWVjZWQwYjRmYTUxODg1ODJmMGEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2NDg5LCJleHAiOjE2NDk3MDAwODl9.iSZIPILeP80bgmPP8QFczWOtvBxgraGbSRxk3y305pQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/update/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"update",
+								"password"
+							]
+						},
+						"description": "Admin and user can use this feature to delete their account."
+					},
+					"response": []
+				}
+			],
+			"description": "All read endpoint from user need to be logged in to be used.\n\nAll write endpoint for user need to be logged in to be used, also a user cannot edit others users."
+		},
+		{
+			"name": "Missions",
+			"item": [
+				{
+					"name": "MISSIONS",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/missions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions"
+							]
+						},
+						"description": "Will respond by 204 status code if there is no content to be seen.\n\nCODE 200 :\n\n``` json\n[\n    {\n        \"_id\": \"62545f96d0b4fa5188582f23\",\n        \"mission_name\": \"PATCHED\",\n        \"country\": \"PATCHcED\",\n        \"start_date\": \"PATCddHED 12/02/2000\",\n        \"end_date\": \"PATCHED end 12/02/2000\",\n        \"roverId\": [\n            \"6249e9964b6606d\"\n        ],\n        \"userId\": \"62545eced0b4fa5188582f0a\"\n    }\n]\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "BY USER ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/missions/specific/user/62545eced0b4fa5188582f0a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"specific",
+								"user",
+								"62545eced0b4fa5188582f0a"
+							]
+						},
+						"description": "This cannot be null since the front handle it and forward a good id."
+					},
+					"response": []
+				},
+				{
+					"name": "COUNT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/missions/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"count"
+							]
+						},
+						"description": "Good pratices, used to avoid fetching the whole data while rendering missins in list."
+					},
+					"response": []
+				},
+				{
+					"name": "MISSON",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWVjZWQwYjRmYTUxODg1ODJmMGEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2NDg5LCJleHAiOjE2NDk3MDAwODl9.iSZIPILeP80bgmPP8QFczWOtvBxgraGbSRxk3y305pQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"mission_name\": \"Leila\",\r\n    \"country\": \"Nauru\",\r\n    \"start_date\": \"2017-09-22T12:41:22 -02:00\",\r\n    \"end_date\": \"2021-12-04T09:44:24 -01:00\",\r\n    \"roverId\": [\r\n      \"6249e9964b6606d\"\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/missions/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"post"
+							]
+						},
+						"description": "The author id will be added to the object.\n\nAlso, the roverIds cannot be bad id since they are provided by the front."
+					},
+					"response": []
+				},
+				{
+					"name": "BY MISSION ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWVjZWQwYjRmYTUxODg1ODJmMGEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk2NDg5LCJleHAiOjE2NDk3MDAwODl9.iSZIPILeP80bgmPP8QFczWOtvBxgraGbSRxk3y305pQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/missions/delete/62545f4cd0b4fa5188582f18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"delete",
+								"62545f4cd0b4fa5188582f18"
+							]
+						},
+						"description": "Only author and admin can delete missions."
+					},
+					"response": []
+				},
+				{
+					"name": "mission_name BY MISSION ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mission_name\": \"PATCHED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/missions/update/mission_name/62545f96d0b4fa5188582f23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"update",
+								"mission_name",
+								"62545f96d0b4fa5188582f23"
+							]
+						},
+						"description": "Only author and admin can patch missions."
+					},
+					"response": []
+				},
+				{
+					"name": "country BY MISSION ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"country\": \"PATCHED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/missions/update/country/62545f96d0b4fa5188582f23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"update",
+								"country",
+								"62545f96d0b4fa5188582f23"
+							]
+						},
+						"description": "Only author and admin can patch missions."
+					},
+					"response": []
+				},
+				{
+					"name": "start_date  BY MISSION ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"12-02-2000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/missions/update/start_date/62545f96d0b4fa5188582f23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"update",
+								"start_date",
+								"62545f96d0b4fa5188582f23"
+							]
+						},
+						"description": "Only author and admin can patch missions."
+					},
+					"response": []
+				},
+				{
+					"name": "end_date BY MISSION ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"end_date\": \"12-02-2000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/missions/update/end_date/62545f96d0b4fa5188582f23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"missions",
+								"update",
+								"end_date",
+								"62545f96d0b4fa5188582f23"
+							]
+						},
+						"description": "Only author and admin can patch missions."
+					},
+					"response": []
+				}
+			],
+			"description": "Missions must be ruled by Admin and author."
+		},
+		{
+			"name": "Rovers",
+			"item": [
+				{
+					"name": "ROVERS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NTdiNDcxMmJlZjA1YTVkN2Q0MWMiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjQ5Njk0NjczLCJleHAiOjE2NDk2OTgyNzN9.rCilKAd6vIRGUaQRolAmoDZcdWkgfc67gO6dVwRiTJ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/rovers?limit=0&offset=0&sortBy=rover_name&sort=asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "0"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "sortBy",
+									"value": "rover_name"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								}
+							]
+						},
+						"description": "Will respond by 204 status code if there is no content to be seen.\n\nParameters :\n\nlimit : limit the number of object returned.\n\noffset : skip objects.\n\nsort :  \n'asc' = ascending  \n'desc' = descending\n\nsortBy : the field used to be sorted by sort (ascending or descending), only the fields : 'rover_name' or 'launch_date' can be used.\n\nCODE 200 :\n\n``` json\n[\n    {\n        \"construction\": {\n            \"date\": \"2028-08d-07\",\n            \"company\": \"TOYLETRY\"\n        },\n        \"_id\": \"62547666ef2a7ff70fc39026\",\n        \"rover_name\": \"bergyes\",\n        \"description\": \"reprehenderit adipisicing enim mollit do irure adipisicing duis et consectetur est irure eiusmod cillum laboris dolor consequat exercitation fugiat velit do ut aliqua pariatur in ea ut ametnim\",\n        \"launch_date\": \"1124496000\",\n        \"is_success\": false,\n        \"image_link\": \"https://images2.imgbox.com/6f/c0/D3Owbmpo_o.png\",\n        \"userId\": \"62545d2c7ade604703384fd3\"\n    },\n    {\n        \"construction\": {\n            \"date\": \"Patched date 12/50/1000\",\n            \"company\": \"PATCHED\"\n        },\n        \"_id\": \"6254654fab02094150ce1396\",\n        \"rover_name\": \"patchedfdfd\",\n        \"description\": \"Patcfdhed\",\n        \"launch_date\": \"971136000\",\n        \"is_success\": false,\n        \"image_link\": \"Patchvved\",\n        \"userId\": \"62545d2c7ade604703384fd3\"\n    }\n]\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "BY USER ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/rovers/specific/user/62545d2c7ade604703384fd3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"specific",
+								"user",
+								"62545d2c7ade604703384fd3"
+							]
+						},
+						"description": "Find rover added by a certain user."
+					},
+					"response": []
+				},
+				{
+					"name": "BY ROVER ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/rovers/specific/rover/6254654fab02094150ce1396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"specific",
+								"rover",
+								"6254654fab02094150ce1396"
+							]
+						},
+						"description": "Display a specific rover"
+					},
+					"response": []
+				},
+				{
+					"name": "GET (count)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/rovers/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"count"
+							]
+						},
+						"description": "Good pratices, used to avoid fetching the whole data while rendering rovers in list."
+					},
+					"response": []
+				},
+				{
+					"name": "ROVER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk3MDIxNDksImV4cCI6MTY0OTcwNTc0OX0.XgEonXYH863rT9CLXu-EVzKl_J__WEGRhIoDDfomCoQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"rover_name\": \"Bergyes\",\r\n    \"description\": \"reprehenderit adipisicing enim mollit do irure adipisicing duis et consectetur est irure eiusmod cillum laboris dolor consequat exercitation fugiat velit do ut aliqua pariatur in ea ut ametnim\",\r\n    \"launch_date\": \"2005-08-20\",\r\n    \"is_success\": false,\r\n    \"construction\": \r\n      {\r\n        \"date\": \"2028-08d-07\",\r\n        \"company\": \"TOYLETRY\"\r\n      },\r\n    \"image_link\": \"https://images2.imgbox.com/6f/c0/D3Owbmpo_o.png\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/rovers/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"post"
+							]
+						},
+						"description": "You must be logged to use this write endpoint.\n\nDate must use the format : 'YYYY-MM-DD'"
+					},
+					"response": []
+				},
+				{
+					"name": "ROVER BY ROVER ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/rovers/delete/624ad12527a64ec9d2b9ca6d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"delete",
+								"624ad12527a64ec9d2b9ca6d"
+							]
+						},
+						"description": "You must be an admin to delete rover.\n\nAnd you must pass the id of a rover. (Normally the front will do it, so it could not be a wrong id)"
+					},
+					"response": []
+				},
+				{
+					"name": "rover_name BY ROVER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rover_name\": \"Patchedfdfd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/rovers/update/rover_name/6254654fab02094150ce1396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"update",
+								"rover_name",
+								"6254654fab02094150ce1396"
+							]
+						},
+						"description": "Only admin can patch rover"
+					},
+					"response": []
+				},
+				{
+					"name": "description BY ROVER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Patcfdhed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/rovers/update/description/6254654fab02094150ce1396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"update",
+								"description",
+								"6254654fab02094150ce1396"
+							]
+						},
+						"description": "Only admin can patch rover"
+					},
+					"response": []
+				},
+				{
+					"name": "launch_date BY ROVER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk3MDIxNDksImV4cCI6MTY0OTcwNTc0OX0.XgEonXYH863rT9CLXu-EVzKl_J__WEGRhIoDDfomCoQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"launch_date\": \"2000-10-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/rovers/update/launch_date/6254654fab02094150ce1396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"update",
+								"launch_date",
+								"6254654fab02094150ce1396"
+							]
+						},
+						"description": "Only admin can patch rover\n\nMust use the format : 'YYYY-MM-DD'"
+					},
+					"response": []
+				},
+				{
+					"name": "is_success BY ROVER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"is_success\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/rovers/update/is_success/6254654fab02094150ce1396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"update",
+								"is_success",
+								"6254654fab02094150ce1396"
+							]
+						},
+						"description": "Only admin can patch rover"
+					},
+					"response": []
+				},
+				{
+					"name": "construction BY ROVER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"construction\": {\r\n        \"date\": \"12-50-1000\",\r\n        \"company\": \"PATCHED\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/rovers/update/construction/6254654fab02094150ce1396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"update",
+								"construction",
+								"6254654fab02094150ce1396"
+							]
+						},
+						"description": "Only admin can patch rover"
+					},
+					"response": []
+				},
+				{
+					"name": "image_link BY ROVER ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk2OTYxNDYsImV4cCI6MTY0OTY5OTc0Nn0.xRdm7oqUfRTbj6nsmVbrXt1mnclklXrpe-Di_pTPf_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image_link\": \"Patchvved\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/rovers/update/image_link/6254654fab02094150ce1396",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"rovers",
+								"update",
+								"image_link",
+								"6254654fab02094150ce1396"
+							]
+						},
+						"description": "Only admin can patch rover"
+					},
+					"response": []
+				}
+			],
+			"description": "Only admin can rules over rovers created.\n\nUsers can only create new rover."
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "LOGIN WITH USER CREDENTIALS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Logging will provide you an access token depending on your userId and your role (isAdmin) for a certain time.\n\nExample answer :\n\n``` json\n\"Logged in succesfully, access token: {eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk3ODAwOTMsImV4cCI6MTY0OTc4MzY5M30.U3yOKKAR38gXuI5WCeLsTxinsYhMzdSsUvUvCYPH1e0} expire in : 1h\"\n\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "You must login with your account to get access token usable in write and users requests."
+		},
+		{
+			"name": "Matching RFC",
+			"item": [
+				{
+					"name": "TEAPOT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/teapot",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"teapot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HELLO THERE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/hellothere",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"hellothere"
+							]
+						},
+						"description": "a great reference for"
+					},
+					"response": []
+				},
+				{
+					"name": "RING",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/ring",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"ring"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Started to implement RFC 2324 standard for HTCPCP protocol.  \n[Source : https://datatracker.ietf.org/doc/html/rfc2324](https://datatracker.ietf.org/doc/html/rfc2324)"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NWQyYzdhZGU2MDQ3MDMzODRmZDMiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDk3ODAwOTMsImV4cCI6MTY0OTc4MzY5M30.U3yOKKAR38gXuI5WCeLsTxinsYhMzdSsUvUvCYPH1e0",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

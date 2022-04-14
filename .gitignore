@@ -1,0 +1,9 @@
+# back
+
+node_modules/
+.npm/
+.env
+# Must be hidden will pushed in public
+
+
+
