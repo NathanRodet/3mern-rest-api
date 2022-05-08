@@ -1,8 +1,9 @@
 # supinfo-3mern
 
+My first API : Rest API build with Nodejs and Expressjs.
+
 ## Deliverables
 
-Do .
 A whole documentation and request to test the API is garanteed and will be found on postman json file after import in postman client.
 
 ## Requirements
