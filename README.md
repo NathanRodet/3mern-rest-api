@@ -1,6 +1,6 @@
-# supinfo-3mern
+# 3mern - REST API to manage launch, rover and more...
 
-My first API : Rest API build with Nodejs and Expressjs.
+Rest API build with Nodejs and Expressjs.
 
 ## Deliverables
 
@@ -11,25 +11,6 @@ A whole documentation and request to test the API is garanteed and will be found
 - node.js
 - postman (To import and read the documentation)
 
-## Dependencies
-
-> "bcryptjs": "^2.4.3"
-
-> "body-parser": "^1.19.2"
-
-> "cors": "^2.8.5"
-
-> "debug": "~2.6.9"
-
-> "dotenv": "^16.0.0"
-
-> "express": "~4.16.1"
-
-> "joi": "^17.6.0"
-
-> "jsonwebtoken": "^8.5.1"
-
->  "mongoose": "^6.2.9"
 
 ## Setup
 
